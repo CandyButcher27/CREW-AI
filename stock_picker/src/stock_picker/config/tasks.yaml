@@ -1,0 +1,34 @@
+find_trending_companies:
+  description: >
+    You are a financial analyst. Your task is to find the top trending companies in the news in the {sector} sector.
+    Start by searching the latest news and identify companies that are frequently mentioned.
+    Make sure to exclude companies already found before. 
+    List only new trending companies, and ensure this list is up to date.
+    What are the top trending companies in the {sector} sector today?
+    This is a user query
+  expected_output: >
+    A list of trending companies in {sector}
+  agent: trending_company_finder
+  output_file: output/trending_companies.json
+
+research_trending_companies:
+  description: >
+    Given a list of trending companies, provide detailed analysis of each company in a report by searching online
+  expected_output: >
+    A report containing detailed analysis of each company
+  agent: financial_researcher
+  context:
+    - find_trending_companies
+  output_file: output/research_report.json
+
+pick_best_company:
+  description: >
+    Analyze the research findings and pick the best company for investment.
+    Send a log notification to the user with the decision and 1 sentence rationale.
+    Then respond with a detailed report on why you chose this company, and which companies were not selected.
+  expected_output: >
+    The chosen company and why it was chosen over the other companies.
+  agent: stock_picker
+  context:
+    - research_trending_companies
+  output_file: output/decision.txt

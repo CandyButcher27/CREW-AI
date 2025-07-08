@@ -1,0 +1,31 @@
+research_task:
+  description: >
+    Conduct a thorough research of the company {company}. Focus on :
+    1. Current Company Status and health
+    2. Historical Company Performance
+    3. Major Challnges and Opportunities
+    4. Recent News and Events
+    5. Future Outlook and potential Changes
+
+    Make sure to share your findings in a structured format with clear sections made
+  expected_output: >
+    A comprehensive research document with well organised sections covering all the required aspects of
+  agent: researcher
+
+analysis_task:
+  description: >
+    Analyse the research findings to create a comprehensive report on {company}
+    Your report shoud : 
+    1. Begin with an executive summary
+    2. Include all the key information from the research
+    3. Provide insightful information on trends and patterns
+    4. Offer a market outlook for the company , noting that this should be used for trading desicions
+    5. Be formatted in a professional, easy to read style with clear headings 
+  expected_output: >
+    A polished professional report on {company} that presents the research findings with added 
+    analysis and insights. THe report should be well structured with an executive summary , main sections 
+    and a conclusion. 
+  agent: analyst
+  context:
+   - research_task
+  output_file: output/analysis_report.md

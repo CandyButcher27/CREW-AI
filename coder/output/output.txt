@@ -1,0 +1,17 @@
+```python
+series_sum = 0.0
+num_terms = 10000
+
+for i in range(num_terms):
+    denominator = 2 * i + 1
+    term = 1.0 / denominator
+    if i % 2 == 1:  # Odd terms are subtracted
+        series_sum -= term
+    else:  # Even terms are added
+        series_sum += term
+
+final_result = series_sum * 4
+print(f"The sum of the first {num_terms} terms multiplied by 4 is: {final_result}")
+```
+Output:
+The sum of the first 10000 terms multiplied by 4 is: 3.1414926535900345
